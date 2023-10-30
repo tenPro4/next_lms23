@@ -1,0 +1,41 @@
+npx create-next-app@13.4.12 next-lms --typescript --tailwind --eslint
+npx shadcn-ui@latest init(https://ui.shadcn.com/docs/installation/next)
+
+command overwrite to restore default
+npx shadcn-ui@latest add button --overwrite
+
+[logo website](https://logoipsum.com/)
+
+install prisma
+-npm i -D prisma
+-npx prisma init
+-npm i @prisma/client
+-npx prisma generate (commit schema changes to local prisma so it can autocomplete for db client class)
+-npx prisma db push (commit schema changes to database)
+-npx prisma studio (open browser to monitor the models data in visualization)
+
+## Database(MySql)
+[#Planetscale](https://app.planetscale.com/) - Free for one database
+
+Key Features
+- [Clerk](https://clerk.com/): User and Authentication Management
+- [Shadcn-UI](https://ui.shadcn.com/): Resuable component library
+- [uploadthing](https://uploadthing.com/) : Highly customizable S3 services compare to cloudinary
+:#remember add images.domains in next.config and add /api/uploadthing to publicRoutes in middleware
+- [MUX](https://www.mux.com/) : Video stream player services. Free tier only can upload 10 sec video and will auto remove after 24 hours
+- [Stripe](https://dashboard.stripe.com/test/dashboard) : Payment testing
+
+Install Stripe
+- Go to stripe download [lastest version](https://github.com/stripe/stripe-cli)
+- Go to stripe developer mode
+- Get API secret key
+- use `stripe login` command
+- stripe listen --forward-to localhost:4242/webhook ( change to localhost:4242/api/webhook)
+- Get webhook secret key (it generate after you listen to webhook)
+- Seed generator
+- Chart :[Recart](https://recharts.org/en-US/)
+
+# Bugs found from origin
+- Free chapter are able to mark as complete after finish chapter(video-player.tsx,onEnd())
+
+stripe password: stripeTest@xxxx

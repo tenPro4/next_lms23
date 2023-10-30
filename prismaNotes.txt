@@ -1,0 +1,66 @@
+1.create Many
+        
+await database.category.createMany({
+            data: [
+              { name: "Computer Science" },
+              { name: "Music" },
+              { name: "Fitness" },
+              { name: "Photography" },
+              { name: "Accounting" },
+              { name: "Engineering" },
+              { name: "Filming" },
+            ]
+        })
+
+2.delete
+await db.course.delete({
+      where: {
+        id: params.courseId,
+      },
+    });
+
+3. contains
+
+await db.course.findMany({
+      where: {
+        isPublished: true,
+        title: {
+          contains: title,
+        },
+        categoryId,
+      },
+      include: {
+        category: true,
+        chapters: {
+          where: {
+            isPublished: true,
+          },
+          select: {
+            id: true,
+          }
+        }
+      },
+      orderBy: {
+        createdAt: "desc",
+      }
+    });
+
+4. update
+await db.chapter.update({
+      where: {
+        id: params.chapterId,
+        courseId: params.courseId,
+      },
+      data: {
+        isPublished: true,
+      }
+    });
+
+5. upsert
+- "upsert" is a combination of "update" and "insert." It refers to the operation of either updating an existing record in a database table if it exists or inserting a new record if it doesn't exist.
+
+await prisma.model.upsert({
+  where: { id: 1 }, // Check if a record with ID 1 exists
+  update: { fieldToUpdate: 'new value' }, // If it exists, update this field
+  create: { field1: 'value1', field2: 'value2' }, // If it doesn't exist, create a new record with these field values
+});
