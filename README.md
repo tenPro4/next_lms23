@@ -1,34 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+## Startup
+```
+npx create-next-app@13.4.12 next-lms --typescript --tailwind --eslint
+npx shadcn-ui@latest init(https://ui.shadcn.com/docs/installation/next)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Shadcn-ui ommand overwrite to restore default
+```
+npx shadcn-ui@latest add button --overwrite
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+[Logo website](https://logoipsum.com/)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Install prisma
+-npm i -D prisma
+-npx prisma init
+-npm i @prisma/client
+-npx prisma generate (commit schema changes to local prisma so it can autocomplete for db client class)
+-npx prisma db push (commit schema changes to database)
+-npx prisma studio (open browser to monitor the models data in visualization)
 
-## Learn More
+## Database(MySql)
+[#Planetscale](https://app.planetscale.com/) - Free for one database
 
-To learn more about Next.js, take a look at the following resources:
+Key Features
+- [Clerk](https://clerk.com/): User and Authentication Management
+- [Shadcn-UI](https://ui.shadcn.com/): Resuable component library
+- [uploadthing](https://uploadthing.com/) : Highly customizable S3 services compare to cloudinary
+:#remember add images.domains in next.config and add /api/uploadthing to publicRoutes in middleware
+- [MUX](https://www.mux.com/) : Video stream player services. Free tier only can upload 10 sec video and will auto remove after 24 hours
+- [Stripe](https://dashboard.stripe.com/test/dashboard) : Payment testing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Install Stripe
+- Go to stripe download [lastest version](https://github.com/stripe/stripe-cli)
+- Go to stripe developer mode
+- Get API secret key
+- use `stripe login` command (download CLI `stripe.exe` from git)
+- stripe listen --forward-to localhost:4242/webhook ( change to localhost:4242/api/webhook)
+- Get webhook secret key (it generate after you listen to webhook)
+- Seed generator :`use node script/seed` to run script
+- Chart :[Recart](https://recharts.org/en-US/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Bugs found from origin
+- Free chapter are able to mark as complete after finish chapter(video-player.tsx,onEnd())
