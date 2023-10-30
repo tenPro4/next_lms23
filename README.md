@@ -40,5 +40,5 @@ Install Stripe
 - Seed generator :`use node script/seed` to run script
 - Chart :[Recart](https://recharts.org/en-US/)
 
-# Bugs found from origin
+## Bugs found from origin
 - Free chapter are able to mark as complete after finish chapter(video-player.tsx,onEnd())
